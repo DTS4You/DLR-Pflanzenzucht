@@ -8,7 +8,7 @@ from machine import Pin, Timer                              # type: ignore
 from libs.module_init import Global_Module as MyModule
 import time                                                 # type: ignore
 
-LOOP_DELAY      = 0.01          # typ. 10 ms
+LOOP_DELAY      = 0.02          # typ. 20 ms
 
 
 # ------------------------------------------------------------------------------
@@ -29,8 +29,8 @@ def main():
     gpio.all_off()
 
     try:       
-        # True
-        while MySerial.sercon_read_flag():
+        # Loop forever !!!
+        while True:
 
             # Loop-Delay !!!
             time.sleep(LOOP_DELAY)
