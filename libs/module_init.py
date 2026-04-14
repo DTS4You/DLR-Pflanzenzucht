@@ -1,13 +1,13 @@
 # #############################################################################
 # ### MyGlobal
-# ### Bereich Raumfahrt V1.00
+# ### Pflanzenzucht V1.00
 # #############################################################################
 
 class Global_Module:
     
     inc_ws2812          = True
-    inc_decoder         = True
-    inc_serial          = True
+    inc_decoder         = False
+    inc_serial          = False
     inc_gpio            = True
 
 
