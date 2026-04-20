@@ -10,7 +10,6 @@ import time                                                 # type: ignore
 
 LOOP_DELAY      = 0.02          # typ. 20 ms
 
-
 # ------------------------------------------------------------------------------
 # --- Main Function                                                          ---
 # ------------------------------------------------------------------------------
@@ -19,7 +18,7 @@ def main():
 
     print("=== Start Main ===")
     
-    blink_couter = 0
+    on_state        = False
 
     gpio = MyGPIO.GPIO()
 
@@ -28,13 +27,24 @@ def main():
     MyWS2812.do_all_def()	# Alle Leds auf Default-Wert
     gpio.all_off()
     
-    time.sleep(2)
+    time.sleep(1)
 
-    MyWS2812.do_all_on()
+    #MyWS2812.do_all_on()
 
     try:       
         # Loop forever !!!
         while True:
+            if True:
+                #print("Taster gedrückt")
+                time.sleep(0.3)
+                if on_state == False:
+                    MyWS2812.do_all_on()
+                    gpio.set_output_byte(0xFF)
+                    on_state = True
+                else:
+                    MyWS2812.do_all_off()
+                    gpio.set_output_byte(0x00)
+                    on_state = False
 
             # Loop-Delay !!!
             time.sleep(LOOP_DELAY)
