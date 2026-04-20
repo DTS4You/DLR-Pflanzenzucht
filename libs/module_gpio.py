@@ -73,55 +73,25 @@ def main():
 
         gpio = GPIO()
 
-        gpio.set_output_bit(0, "On")
-        gpio.set_output_bit(1, "On")
-        gpio.set_output_bit(2, "On")
-        gpio.set_output_bit(3, "On")
-        gpio.set_output_bit(4, "On")
-        gpio.set_output_bit(5, "On")
-        gpio.set_output_bit(6, "On")
-        gpio.set_output_bit(7, "On")
-        gpio.set_output_bit(8, "On")
+        gpio.all_off()
+        
+        for i in range(5):
+            gpio.all_on()
+            sleep(0.3)
+            gpio.all_off()
+            sleep(0.3)
         
         sleep(1)
 
-        gpio.set_output_bit(0, "Off")
-        gpio.set_output_bit(1, "Off")
-        gpio.set_output_bit(2, "Off")
-        gpio.set_output_bit(3, "Off")
-        gpio.set_output_bit(4, "Off")
-        gpio.set_output_bit(5, "Off")
-        gpio.set_output_bit(6, "Off")
-        gpio.set_output_bit(7, "Off")
-        gpio.set_output_bit(8, "Off")
-        
-        gpio.blink_out()    
-
-        gpio.set_output_bit(0, "On")
-
-        sleep(0.5)
-
-        gpio.blink_out() 
-
-        sleep(0.5)
-
-        gpio.blink_out()
-
-        sleep(0.5)
-
-        gpio.blink_out()
-
-        sleep(0.5)
-
-        gpio.blink_out()
-
-        sleep(0.5)
-
+        for i in range(20):
+            print(gpio.get_input_byte())
+            sleep(0.1)
 
     except KeyboardInterrupt:
         print("Keyboard Interrupt")
     finally:
         print("Exiting the program")
+        gpio.all_off()
     print("=== End Main ===")
 
 # ------------------------------------------------------------------------------
