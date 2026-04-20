@@ -1,7 +1,7 @@
 ######################################################
 ### Main-Program                                   ###
 ### Projekt: Pflanzenzucht                         ###
-### Version: 0.01                                  ###
+### Version: 1.00                                  ###
 ### Datum  : 14.04.2026                            ###
 ######################################################
 from machine import Pin, Timer                              # type: ignore
