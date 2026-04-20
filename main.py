@@ -8,7 +8,7 @@ from machine import Pin, Timer                              # type: ignore
 from libs.module_init import Global_Module as MyModule
 import time                                                 # type: ignore
 
-LOOP_DELAY      = 0.02          # typ. 20 ms
+LOOP_DELAY      = 0.05          # typ. 50 ms
 
 # ------------------------------------------------------------------------------
 # --- Main Function                                                          ---
@@ -22,21 +22,20 @@ def main():
 
     gpio = MyGPIO.GPIO()
 
-    print("GPIO Test Ende")
+    print("Setup Default")
 
-    MyWS2812.do_all_def()	# Alle Leds auf Default-Wert
+    MyWS2812.do_all_off()	# Alle Leds auf "AUS"
     gpio.all_off()
     
-    time.sleep(1)
+    time.sleep(0.3)
 
-    #MyWS2812.do_all_on()
+    print("=== Main-Loop ===")
 
     try:       
         # Loop forever !!!
         while True:
-            if True:
-                #print("Taster gedrückt")
-                time.sleep(0.3)
+            if gpio.get_input_bit(0):
+                print("Taster gedrückt")
                 if on_state == False:
                     MyWS2812.do_all_on()
                     gpio.set_output_byte(0xFF)
@@ -45,7 +44,7 @@ def main():
                     MyWS2812.do_all_off()
                     gpio.set_output_byte(0x00)
                     on_state = False
-
+                time.sleep(0.5)
             # Loop-Delay !!!
             time.sleep(LOOP_DELAY)
 
