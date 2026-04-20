@@ -27,6 +27,10 @@ def main():
 
     MyWS2812.do_all_def()	# Alle Leds auf Default-Wert
     gpio.all_off()
+    
+    time.sleep(2)
+
+    MyWS2812.do_all_on()
 
     try:       
         # Loop forever !!!

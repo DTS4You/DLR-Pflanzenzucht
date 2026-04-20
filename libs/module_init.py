@@ -58,7 +58,7 @@ class Global_WS2812:
 
     color_def           = (  0,  0,  5)
     color_off           = (  0,  0,  0)
-    color_on            = (100,100,100)
+    color_on            = (100,  0,100)
     color_half          = ( 50, 50, 50)
     color_dot           = ( 50, 50, 50)
     color_blink_on      = (  0,200,  0)
