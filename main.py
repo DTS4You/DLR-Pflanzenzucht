@@ -29,7 +29,7 @@ def main():
     
     time.sleep(0.3)
 
-    print("=== Main-Loop ===")
+    print(">>> Main-Loop >>>")
 
     try:       
         # Loop forever !!!
