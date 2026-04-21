@@ -24,10 +24,16 @@ def main():
 
     print("Setup Default")
 
-    MyWS2812.do_all_off()	# Alle Leds auf "AUS"
-    gpio.all_off()
+    MyWS2812.do_all_on()	# Alle Leds auf "AUS"
+    time.sleep(0.05)
+    gpio.set_output_byte(0xFF)
     
     time.sleep(0.3)
+#
+    MyWS2812.do_all_off()	# Alle Leds auf "AUS"
+    time.sleep(0.05)
+    gpio.set_output_byte(0x00)
+    #
 
     print(">>> Main-Loop >>>")
 
@@ -39,10 +45,12 @@ def main():
                 print("Taster gedrückt")
                 if on_state == False:
                     MyWS2812.do_all_on()
+                    time.sleep(0.05)
                     gpio.set_output_byte(0xFF)
                     on_state = True
                 else:
                     MyWS2812.do_all_off()
+                    time.sleep(0.05)
                     gpio.set_output_byte(0x00)
                     on_state = False
                 time.sleep(0.5)
