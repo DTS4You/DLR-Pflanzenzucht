@@ -35,6 +35,7 @@ def main():
         # Loop forever !!!
         while True:
             if gpio.get_input_bit(0):
+                time.sleep(0.05)
                 print("Taster gedrückt")
                 if on_state == False:
                     MyWS2812.do_all_on()
