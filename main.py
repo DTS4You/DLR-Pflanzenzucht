@@ -19,6 +19,8 @@ def main():
     print("=== Start Main ===")
     
     on_state        = False
+    blink_timer     = 0
+    blink_flag      = True
 
     gpio = MyGPIO.GPIO()
 
@@ -46,7 +48,6 @@ def main():
                 if on_state == False:
                     MyWS2812.do_all_on()
                     time.sleep(0.05)
-                    gpio.set_output_byte(0xFF)
                     on_state = True
                 else:
                     MyWS2812.do_all_off()
@@ -54,6 +55,21 @@ def main():
                     gpio.set_output_byte(0x00)
                     on_state = False
                 time.sleep(0.5)
+            
+            if blink_timer < 6:
+                blink_timer = blink_timer + 1
+            else:
+                blink_timer = 0
+                blink_flag = not blink_flag
+            
+            if on_state == True:
+                if blink_flag:
+                    gpio.set_output_byte(0xFF)
+                    time.sleep(0.05)
+                else:
+                    gpio.set_output_byte(0x00)
+                    time.sleep(0.05)
+
             # Loop-Delay !!!
             time.sleep(LOOP_DELAY)
 
