@@ -22,7 +22,7 @@ class GPIO:
         self.blink_time = blink_time
 
     def get_input(self, pin):
-        self.input = self.mcp.pin(pin, mode=1, pullup=True)
+        self.input = self.mcp.pin(pin, mode=1, pullup=False)
         return self.input
 
     def set_output(self, pin, state):
